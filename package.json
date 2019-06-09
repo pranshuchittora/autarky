@@ -6,9 +6,8 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.2",
-    "glob": "^7.1.4",
     "moment": "^2.24.0",
-    "readdirp": "^3.0.2"
+    "rimraf": "^2.6.3"
   },
   "scripts": {
     "start": "node index.js"
