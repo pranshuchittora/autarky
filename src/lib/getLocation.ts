@@ -1,16 +1,22 @@
-const fs = require("fs");
-const path = require("path");
-const chalk = require("chalk");
+import * as fs from "fs";
+import * as path from "path";
+import chalk from "chalk";
 
-const { TimeRelative } = require("./time");
-const { validDiff } = require("./utils");
+import { TimeRelative } from "./time";
+import { validDiff } from "./utils";
 
-const showFiles = (dir, filelist) => {
+/**
+ *
+ * @param dir
+ * @param filelist
+ */
+export const showFiles = (dir, filelist?: any) => {
   filelist = filelist || [];
+  let files;
   try {
     files = fs.readdirSync(dir);
   } catch (e) {
-    console.log("ERR_ACCESS_DENIED");
+    console.log("ERR_ACCESS_DENIED", e);
     return filelist;
   }
   files.forEach(function(file) {
@@ -21,17 +27,15 @@ const showFiles = (dir, filelist) => {
         return filelist;
       }
       if (fileStats.isDirectory() && file === "node_modules") {
-        const fileMTime = fileStats.mtime;
-        const timeCurrent = new Date();
+        const fileMTime: any = fileStats.mtime;
+        const timeCurrent: any = new Date();
         const timeDiff = timeCurrent - fileMTime;
         if (validDiff(timeDiff))
           console.log(absPath, chalk.yellow(TimeRelative(fileMTime)));
       } else if (fileStats.isDirectory()) filelist = showFiles(dir + "/" + file, filelist);
     } catch (e) {
-      console.log("ERR_LOCATION_NOT_FOUND");
+      console.log("ERR_LOCATION_NOT_FOUND", e);
     }
   });
   return filelist;
 };
-
-module.exports = { showFiles };

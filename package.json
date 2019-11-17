@@ -5,11 +5,18 @@
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^3.0.0",
+    "fs": "^0.0.1-security",
     "moment": "^2.24.0",
-    "rimraf": "^2.6.3"
+    "rimraf": "^3.0.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node dist/index.js ../../"
+  },
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/moment": "^2.13.0",
+    "@types/node": "^12.12.8",
+    "@types/rimraf": "^2.0.3"
   }
 }

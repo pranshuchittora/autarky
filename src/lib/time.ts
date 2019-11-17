@@ -1,8 +1,12 @@
 const moment = require("moment");
 
-const config = require("../config.json");
+import config from "../config.json";
 
-function TimeRelative(timeVal) {
+/**
+ *
+ * @param timeVal
+ */
+export function TimeRelative(timeVal): string {
   const timeNow = new Date().getTime();
   const timeDiff = timeNow - timeVal;
   return moment(timeVal).fromNow();
@@ -16,8 +20,6 @@ function TimeRelative(timeVal) {
  * @returns {Number} timeMilli - Return time in milliSeconds
  */
 
-function TimeMonthToMilli(time) {
+export function TimeMonthToMilli(time: number): number {
   return time * 2.628e9;
 }
-
-module.exports = { TimeRelative, TimeMonthToMilli };
