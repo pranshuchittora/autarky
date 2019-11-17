@@ -5,37 +5,43 @@ import chalk from "chalk";
 import { TimeRelative } from "./time";
 import { validDiff } from "./utils";
 
-/**
- *
- * @param dir
- * @param filelist
- */
-export const showFiles = (dir, filelist?: any) => {
+export const showFiles = (dir, { filelist, RefinedFileList }) => {
+  RefinedFileList = RefinedFileList || [];
   filelist = filelist || [];
   let files;
   try {
     files = fs.readdirSync(dir);
   } catch (e) {
     console.log("ERR_ACCESS_DENIED", e);
-    return filelist;
+    return { filelist, RefinedFileList };
   }
   files.forEach(function(file) {
     try {
       const fileStats = fs.statSync(dir + "/" + file);
       const absPath = path.resolve(dir + "/" + file);
       if (fileStats.isDirectory() && absPath.includes("/.")) {
-        return filelist;
+        return { filelist, RefinedFileList };
       }
       if (fileStats.isDirectory() && file === "node_modules") {
         const fileMTime: any = fileStats.mtime;
         const timeCurrent: any = new Date();
         const timeDiff = timeCurrent - fileMTime;
-        if (validDiff(timeDiff))
-          console.log(absPath, chalk.yellow(TimeRelative(fileMTime)));
-      } else if (fileStats.isDirectory()) filelist = showFiles(dir + "/" + file, filelist);
+        // Dir is valid as per the config
+        if (validDiff(timeDiff)) {
+          let fileDetailsObj: Object = {
+            path: absPath,
+            age: TimeRelative(fileMTime)
+          };
+          // console.log(fileDetailsObj);
+          RefinedFileList.push(fileDetailsObj);
+        }
+      } else if (fileStats.isDirectory()) {
+        filelist = showFiles(dir + "/" + file, { filelist, RefinedFileList })
+          .filelist;
+      }
     } catch (e) {
       console.log("ERR_LOCATION_NOT_FOUND", e);
     }
   });
-  return filelist;
+  return { filelist, RefinedFileList };
 };
