@@ -1,8 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import chalk from "chalk";
 
-import { TimeRelative } from "./time";
 import { validDiff } from "./utils";
 
 export const showFiles = (dir, { filelist, RefinedFileList }) => {
@@ -30,7 +28,7 @@ export const showFiles = (dir, { filelist, RefinedFileList }) => {
         if (validDiff(timeDiff)) {
           let fileDetailsObj: Object = {
             path: absPath,
-            age: TimeRelative(fileMTime)
+            age: fileMTime
           };
           // console.log(fileDetailsObj);
           RefinedFileList.push(fileDetailsObj);

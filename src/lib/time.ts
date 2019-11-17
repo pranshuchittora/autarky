@@ -20,6 +20,6 @@ export function TimeRelative(timeVal): string {
  * @returns {Number} timeMilli - Return time in milliSeconds
  */
 
-export function TimeMonthToMilli(time: number): number {
+export function TimeMonthToMilli(time: any): number {
   return time * 2.628e9;
 }

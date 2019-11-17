@@ -1,19 +1,37 @@
 import prompts from "prompts";
 
+import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "../redux/actionTypes";
+import store from "../redux/index";
+import { TimeRelative } from "./time";
 import { promptListParser } from "./utils";
 export async function promptMultiSelectDir(ListDir: Object[]) {
+  const parsedChoices = await promptListParser(ListDir);
+
   const response = await prompts({
     type: "multiselect",
     name: "value",
     message: "Select Directories",
-    choices: promptListParser(ListDir),
+    choices: parsedChoices,
 
     hint: "- Space to select. Return to submit"
   });
 
-  console.log(response.meaning);
+  store.dispatch({
+    type: UPDATE_DIRS_LIST,
+    payload: {
+      dir_list: response.value
+    }
+  });
 }
 
+export async function promptAgeSelect() {
+  const response = await prompts({
+    type: "number",
+    name: "age",
+    message: "How old node_modules you wanna delete? (months)"
+  });
+  store.dispatch({ type: CHANGE_AGE_CAP, payload: { file_age: response.age } });
+}
 // const questions = [
 //   {
 //     type: "text",

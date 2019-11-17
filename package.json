@@ -1,23 +1,30 @@
 {
   "name": "autarky",
   "version": "1.0.0",
-  "main": "index.js",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
+  "bin": {
+    "autarky": "./dist/index.js"
+  },
+  "main": "dist/index",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "chalk": "^3.0.0",
     "fs": "^0.0.1-security",
     "moment": "^2.24.0",
     "prompts": "^2.3.0",
+    "redux": "^4.0.4",
     "rimraf": "^3.0.0"
   },
   "scripts": {
-    "start": "node dist/index.js ../../"
+    "start": "node dist/index.js ../../",
+    "prepublish": "tsc"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/moment": "^2.13.0",
     "@types/node": "^12.12.8",
+    "@types/redux": "^3.6.0",
     "@types/rimraf": "^2.0.3"
   }
 }

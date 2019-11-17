@@ -8,11 +8,13 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "target": "es6",
+    "target": "es5",
     "strict": false,
     "lib": ["es6", "es2017"],
     "resolveJsonModule": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "declaration": true
   },
-  "include": ["src/**/*.ts"]
+
+  "exclude": ["node_modules", "dist"]
 }
