@@ -2,7 +2,7 @@ import { TimeMonthToMilli } from "./time";
 
 import configFile from "../config.json";
 interface IConfig {
-  file_age: number;
+  file_age: any;
 }
 /**
  *
