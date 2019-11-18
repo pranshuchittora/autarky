@@ -1,11 +1,11 @@
 {
   "name": "autarky",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Liberating disk space from node_modules",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
   "bin": {
-    "autarky": "./dist/index.js"
+    "autarky": "dist/index.js"
   },
   "main": "dist/index",
   "types": "dist/index.d.ts",
@@ -18,12 +18,12 @@
     "rimraf": "^3.0.0"
   },
   "scripts": {
-    "start": "node dist/index.js ../../",
+    "start": "node dist/index.js",
     "prepublish": "tsc",
     "build": "tsc"
   },
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ],
   "devDependencies": {
     "@types/chalk": "^2.2.0",
