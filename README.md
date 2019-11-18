@@ -2,8 +2,8 @@
 
 Liberating disk space from node_modules
 
-<div style="text-align:center; filter: drop-shadow(0px 0px 10px #222);">
-<img style="width:80%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/demo.gif'/>
+<div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
+<img src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/demo.gif'/>
 </div>
 
 ### Installation
@@ -20,8 +20,8 @@ It's 2019 and I got ran out of storage in my laptop after a thorough analysis I 
 
 I also have a few projects which I touch once in a blue moon, hence they end up eating a lot of space. On the other hand, picking & removing `node_modules` manually is a tedious process. So I thought why not automate it.
 
-<div style="text-align:center; filter: drop-shadow(0px 0px 10px #222);">
-<img style="width:80%;max-width:520px" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/heavy.png'/>
+<div  align="center" style="filter: drop-shadow(0px 0px 10px #222);">
+<img width="50%"  src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/heavy.png'/>
 </div>
 
 ### Installation
