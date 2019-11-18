@@ -1,6 +1,4 @@
-const moment = require("moment");
-
-import config from "../config.json";
+import moment from "moment";
 
 /**
  *
@@ -9,7 +7,7 @@ import config from "../config.json";
 export function TimeRelative(timeVal): string {
   const timeNow = new Date().getTime();
   const timeDiff = timeNow - timeVal;
-  return moment(timeVal).fromNow();
+  return moment(timeVal).fromNow(true);
 }
 
 /**
