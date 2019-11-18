@@ -5,7 +5,7 @@
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
   "bin": {
-    "autarky": "/dist/index.js"
+    "autarky": "./dist/index.js"
   },
   "main": "dist/index",
   "types": "dist/index.d.ts",
