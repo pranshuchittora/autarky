@@ -2,6 +2,11 @@
 
 Liberating disk space from node_modules
 
+![npm](https://img.shields.io/npm/v/autarky)
+![downloads](https://img.shields.io/npm/dm/autarky?style=flat)
+![NPM](https://img.shields.io/npm/l/autarky)
+![GitHub stars](https://img.shields.io/github/stars/pranshuchittora/autarky?style=social)
+
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
 <img src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/demo.gif'/>
 </div>
@@ -40,3 +45,12 @@ Autarky works by traversing all the child directories recursively relative to th
 2. Select the `node_modules` which you want to delete.
 3. Confirm deletion.
 4. 200 😉
+
+---
+
+License MIT
+
+Author: Pranshu Chittora
+
+[Github](https://github.com/pranshuchittora/)
+[Twitter](https://twitter.com/pranshuchittora)

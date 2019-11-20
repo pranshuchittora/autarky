@@ -1,9 +1,10 @@
 {
   "name": "autarky",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Liberating disk space from node_modules",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
+  "homepage": "https://github.com/pranshuchittora/autarky",
   "bin": {
     "autarky": "dist/index.js"
   },
@@ -31,5 +32,13 @@
     "@types/node": "^12.12.8",
     "@types/redux": "^3.6.0",
     "@types/rimraf": "^2.0.3"
-  }
+  },
+  "keywords": [
+    "cli",
+    "typescript",
+    "nodejs",
+    "node_modules",
+    "storage manager",
+    "disk space"
+  ]
 }
