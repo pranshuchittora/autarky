@@ -4,3 +4,5 @@ src
 tsconfig.json
 docs
 jest.config.js
+
+*.temp

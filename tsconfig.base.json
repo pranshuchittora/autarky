@@ -13,5 +13,5 @@
     "resolveJsonModule": true,
     "declaration": true
   },
-  "exclude": ["node_modules", "dist", "src/lib/tests"]
+  "exclude": ["node_modules", "dist", "src/lib/tests", "build"]
 }

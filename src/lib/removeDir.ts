@@ -1,19 +1,11 @@
-import rimraf from "rimraf";
-import chalk from "chalk";
+import rimraf = require("rimraf");
 
 export function removeDir(pathToDir: any) {
-  rimraf(pathToDir, err => {
-    if (err) {
-      console.log(chalk.red(err));
-    }
-  });
+  rimraf.sync(pathToDir);
 }
 
 export function removeDirBulk(DirList: String[]): void {
   DirList.forEach(absPath => {
     removeDir(absPath);
   });
-  process.stdout.write(
-    chalk.green(`\nDeleted directories successfully 🎉\n\n`)
-  );
 }

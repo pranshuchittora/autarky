@@ -3,9 +3,7 @@ module.exports = {
   testEnvironment: "node",
   globals: {
     "ts-jest": {
-      diagnostics: {
-        pathRegex: /\.(spec|test)\.ts$/
-      }
+      diagnostics: false
     }
   },
   roots: ["<rootDir>/src"],

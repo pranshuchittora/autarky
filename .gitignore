@@ -4,3 +4,5 @@ build
 
 package-lock.json
 yarn-error.log
+
+*.temp

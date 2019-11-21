@@ -1,4 +1,5 @@
 import prompts from "prompts";
+import * as chalk from "chalk";
 
 import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "../redux/actionTypes";
 import store from "../redux/index";
@@ -48,5 +49,8 @@ export async function promptDeleteConfirm() {
   // store.dispatch({ type: CHANGE_AGE_CAP, payload: { file_age: response.age } });
   if (response.confirmation === true) {
     removeDirBulk(dirList);
+    process.stdout.write(
+      chalk.green(`\nDeleted directories successfully 🎉\n\n`)
+    );
   }
 }
