@@ -1,5 +1,6 @@
 import path from "path";
 import chalk from "chalk";
+import getSize from "g-factor";
 
 import { TimeRelative } from "./time";
 import { TimeMonthToMilli } from "./time";
@@ -22,11 +23,14 @@ export function promptListParser(List: Object[]): Object[] {
   let ParsedList: Object[] = [];
 
   List.forEach((item: IRefinedListItem) => {
+    const FileSize = getSize(item.path);
     let ItemObj: IPromptSelect = {
       title:
         path.relative(process.cwd(), item.path) +
-        " -  " +
-        chalk.yellow(TimeRelative(item.age) + " old"),
+        " - " +
+        chalk.bgBlack(chalk.magentaBright(FileSize.SIZE_Parsed)) +
+        " " +
+        chalk.bgBlack(chalk.greenBright(TimeRelative(item.age) + " old")),
       value: item.path
     };
     ParsedList.push(ItemObj);

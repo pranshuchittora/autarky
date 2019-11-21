@@ -6,26 +6,27 @@
   "license": "MIT",
   "homepage": "https://github.com/pranshuchittora/autarky",
   "bin": {
-    "autarky": "dist/index.js"
+    "autarky": "build/index.js"
   },
-  "main": "dist/index",
-  "types": "dist/index.d.ts",
+  "main": "build/index",
+  "types": "build/index.d.ts",
   "dependencies": {
     "chalk": "^3.0.0",
     "fs": "^0.0.1-security",
+    "g-factor": "^1.0.0",
     "moment": "^2.24.0",
     "prompts": "^2.3.0",
     "redux": "^4.0.4",
     "rimraf": "^3.0.0"
   },
   "scripts": {
-    "start": "node dist/index.js",
+    "watch": "tsc -p tsconfig.dev.json --watch",
+    "build": "tsc -p tsconfig.prod.json",
     "test": "jest",
-    "prepublish": "tsc",
-    "build": "tsc"
+    "prepublish": "yarn run build && yarn run test"
   },
   "files": [
-    "dist/**/*"
+    "build/**/*"
   ],
   "devDependencies": {
     "@types/chalk": "^2.2.0",
