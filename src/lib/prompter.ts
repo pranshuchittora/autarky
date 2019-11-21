@@ -1,5 +1,5 @@
 import prompts from "prompts";
-import * as chalk from "chalk";
+import chalk from "chalk";
 
 import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "../redux/actionTypes";
 import store from "../redux/index";
