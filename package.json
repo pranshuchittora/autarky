@@ -20,6 +20,7 @@
   },
   "scripts": {
     "start": "node dist/index.js",
+    "test": "jest",
     "prepublish": "tsc",
     "build": "tsc"
   },
@@ -28,10 +29,14 @@
   ],
   "devDependencies": {
     "@types/chalk": "^2.2.0",
+    "@types/jest": "^24.0.23",
     "@types/moment": "^2.13.0",
     "@types/node": "^12.12.8",
     "@types/redux": "^3.6.0",
-    "@types/rimraf": "^2.0.3"
+    "@types/rimraf": "^2.0.3",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.7.2"
   },
   "keywords": [
     "cli",
