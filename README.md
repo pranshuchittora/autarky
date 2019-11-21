@@ -5,6 +5,7 @@ Liberating disk space from node_modules
 ![npm](https://img.shields.io/npm/v/autarky)
 ![downloads](https://img.shields.io/npm/dm/autarky?style=flat)
 ![NPM](https://img.shields.io/npm/l/autarky)
+[![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
 ![GitHub stars](https://img.shields.io/github/stars/pranshuchittora/autarky?style=social)
 
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
@@ -13,11 +14,19 @@ Liberating disk space from node_modules
 
 ### Installation
 
-> npm i -g autarky
+```bash
+# npm
+npm i -g autarky
+
+#yarn
+yarn global add autarky
+```
 
 ### Usage
 
-> autarky
+```bash
+$> autarky
+```
 
 ### Motivation
 
@@ -26,16 +35,8 @@ It's 2019 and I got ran out of storage in my laptop after a thorough analysis I 
 I also have a few projects which I touch once in a blue moon, hence they end up eating a lot of space. On the other hand, picking & removing `node_modules` manually is a tedious process. So I thought why not automate it.
 
 <div  align="center" style="filter: drop-shadow(0px 0px 10px #222);">
-<img width="50%"  src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/heavy.png'/>
+<img width="70%"  src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/heavy.png'/>
 </div>
-
-### Installation
-
-> npm i -g autarky
-
-### Usage
-
-> autarky
 
 ### How it works
 
