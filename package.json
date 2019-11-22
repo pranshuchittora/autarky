@@ -1,5 +1,5 @@
 {
-  "name": "autarky",
+  "name": "@pranshuchittora/autarky",
   "version": "1.1.0",
   "description": "Liberating disk space from node_modules",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
@@ -7,7 +7,7 @@
   "homepage": "https://github.com/pranshuchittora/autarky#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pranshuchittora/autarky.git"
+    "url": "git://github.com/pranshuchittora/autarky.git"
   },
   "bugs": {
     "url": "https://github.com/pranshuchittora/autarky/issues"
