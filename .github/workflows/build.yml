@@ -1,4 +1,4 @@
-name: Node CI
+name: Node Test & Build
 
 on: [push]
 
@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install, build, and test
+      - name: Install, test and build
         run: |
           yarn
           yarn run test
