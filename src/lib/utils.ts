@@ -25,7 +25,7 @@ export function promptListParser(List: Object[]): Object[] {
   List.forEach((item: IRefinedListItem) => {
     const FileSize = getSize(item.path);
     let ItemObj: IPromptSelect = {
-      title:
+      name:
         path.relative(process.cwd(), item.path) +
         " - " +
         chalk.bgBlack(chalk.magentaBright(FileSize.SIZE_Parsed)) +

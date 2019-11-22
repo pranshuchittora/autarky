@@ -1,5 +1,5 @@
 export interface IPromptSelect {
-  title: String;
+  name: String;
   value: String;
 }
 
