@@ -6,6 +6,7 @@ Liberating disk space from node_modules
 ![downloads](https://img.shields.io/npm/dm/autarky?style=flat)
 ![NPM](https://img.shields.io/npm/l/autarky)
 [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ca50bed68e1c8f074c5f/maintainability)](https://codeclimate.com/github/pranshuchittora/autarky/maintainability)
 ![GitHub stars](https://img.shields.io/github/stars/pranshuchittora/autarky?style=social)
 
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
@@ -28,6 +29,10 @@ yarn global add autarky
 $> autarky
 ```
 
+### Why autarky
+
+In today's world storage is comparatively costlier than compute. Majority of devs uses MacBooks and sadly MacBooks have pretty low storage (for base models). Hence filling up storage is quite often and we spend a lot of time picking stuff to be deleted.
+
 ### Motivation
 
 It's 2019 and I got ran out of storage in my laptop after a thorough analysis I found out that the majority of the storage is occupied by `node_modules`. As each project have a separate node_modules (duplication in spite of the same version).
@@ -48,6 +53,8 @@ Autarky works by traversing all the child directories recursively relative to th
 4. 200 😉
 
 ---
+
+Read [CONTRIBUTION Guide](./CONTRIBUTING.md)
 
 License MIT
 

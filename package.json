@@ -21,6 +21,7 @@
     "chalk": "^3.0.0",
     "fs": "^0.0.1-security",
     "g-factor": "^1.0.0",
+    "inquirer": "^7.0.0",
     "moment": "^2.24.0",
     "prompts": "^2.3.0",
     "redux": "^4.0.4",
@@ -30,7 +31,7 @@
     "watch": "tsc -p tsconfig.dev.json --watch",
     "build": "tsc -p tsconfig.prod.json",
     "test": "jest",
-    "prepublish": "yarn run build && yarn run test"
+    "prepublish": "yarn run build"
   },
   "files": [
     "build/**/*"
