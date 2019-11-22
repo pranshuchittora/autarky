@@ -31,7 +31,7 @@
     "watch": "tsc -p tsconfig.dev.json --watch",
     "build": "tsc -p tsconfig.prod.json",
     "test": "jest",
-    "prepublish": "yarn run test && yarn run build"
+    "prepublish": "yarn run build"
   },
   "files": [
     "build/**/*"
