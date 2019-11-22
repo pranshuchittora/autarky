@@ -44,7 +44,7 @@
     "@types/redux": "^3.6.0",
     "@types/rimraf": "^2.0.3",
     "jest": "^24.9.0",
-    "ts-jest": "^24.1.0",
+    "ts-jest": "^24.2.0",
     "typescript": "^3.7.2"
   },
   "keywords": [
