@@ -1,8 +1,9 @@
-dist
+*.temp
+docs
+
+jest.config.js
+tsconfig.json
+.github
 
 src
-tsconfig.json
-docs
-jest.config.js
-
-*.temp
+dist
