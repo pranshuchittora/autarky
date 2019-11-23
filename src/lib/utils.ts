@@ -31,7 +31,8 @@ export function promptListParser(List: Object[]): Object[] {
         chalk.bgBlack(chalk.magentaBright(FileSize.SIZE_Parsed)) +
         " " +
         chalk.bgBlack(chalk.greenBright(TimeRelative(item.age) + " old")),
-      value: item.path
+      value: item.path,
+      size: FileSize.SIZE_Number
     };
     ParsedList.push(ItemObj);
   });
@@ -49,4 +50,12 @@ export function sortQueriesRefinedPath(RefinedFileList: IRefinedListItem[]) {
     return 0;
   });
   return RefinedFileList;
+}
+
+export function findTotalSize(InputArr: IPromptSelect[] | any[]): number {
+  let sum = 0;
+  InputArr.forEach(eObj => {
+    sum += eObj.size;
+  });
+  return sum;
 }

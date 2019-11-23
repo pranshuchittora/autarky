@@ -1,6 +1,8 @@
-# Autarky
-
+<div align="center">
+<img src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/logo/autarky_128.png'/>
+<h1>Autarky</h1>
 Liberating disk space from node_modules
+</div>
 
 ![npm](https://img.shields.io/npm/v/autarky)
 ![downloads](https://img.shields.io/npm/dm/autarky?style=flat)
