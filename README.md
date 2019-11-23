@@ -1,7 +1,5 @@
 <div align="center">
-<img src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/logo/autarky_128.png'/>
 <h1>Autarky</h1>
-Liberating disk space from node_modules
 </div>
 
 ![npm](https://img.shields.io/npm/v/autarky)
@@ -10,6 +8,11 @@ Liberating disk space from node_modules
 [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ca50bed68e1c8f074c5f/maintainability)](https://codeclimate.com/github/pranshuchittora/autarky/maintainability)
 ![GitHub stars](https://img.shields.io/github/stars/pranshuchittora/autarky?style=social)
+
+<div align="center">
+<img align="center" width="200" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/logo/autarky_512.png'/>
+<h5>Liberating disk space from node_modules</h5>
+</div>
 
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
 <img src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/demo.gif'/>
@@ -56,7 +59,7 @@ Autarky works by traversing all the child directories recursively relative to th
 
 ---
 
-Read [CONTRIBUTION Guide](./CONTRIBUTING.md)
+Read [CONTRIBUTING Guide](./CONTRIBUTING.md)
 
 License MIT
 
