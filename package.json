@@ -20,7 +20,7 @@
   "dependencies": {
     "chalk": "^3.0.0",
     "fs": "^0.0.1-security",
-    "g-factor": "^1.0.0",
+    "g-factor": "^1.0.1",
     "inquirer": "^7.0.0",
     "moment": "^2.24.0",
     "redux": "^4.0.4",

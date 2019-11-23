@@ -1,9 +1,10 @@
 import chalk from "chalk";
+import { convertBytes } from "g-factor";
 import * as inquirer from "inquirer";
 
 import store from "../redux/index";
 import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "../redux/actionTypes";
-import { promptListParser } from "./utils";
+import { promptListParser, findTotalSize } from "./utils";
 import { removeDirBulk } from "./removeDir";
 
 /**
@@ -44,19 +45,30 @@ export async function promptMultiSelectDir(ListDir: Object[]) {
       }
     }
   ]);
+  let ListWithSize = [];
+  response.selectedDirs.forEach(elm => {
+    //
+    parsedChoices.forEach((eachObj: any) => {
+      if (eachObj.value == elm) {
+        ListWithSize.push(eachObj);
+      }
+    });
+  });
 
   store.dispatch({
     type: UPDATE_DIRS_LIST,
     payload: {
-      dir_list: response.selectedDirs
+      dir_list: ListWithSize
     }
   });
 }
 
 export async function promptDeleteConfirm() {
-  const dirList = store.getState().config.dir_list;
+  const dirList = store.getState().config.dir_list.map(e => {
+    return e.value;
+  });
   const count = Array.isArray(dirList) && dirList.length;
-
+  const TOTAL_SIZE = findTotalSize(store.getState().config.dir_list);
   const response = await inquirer.prompt([
     {
       type: "confirm",
@@ -68,7 +80,12 @@ export async function promptDeleteConfirm() {
   if (response.confirmation === true) {
     removeDirBulk(dirList);
     process.stdout.write(
-      chalk.green(`\nDeleted ${count} directories successfully 🎉\n\n`)
+      chalk.green(
+        `\nDeleted ${count} directories successfully 🎉\n
+        ${chalk.black(
+          chalk.magentaBright(convertBytes(TOTAL_SIZE))
+        )} now free on your 💻\n\n`
+      )
     );
   } else {
     process.stdout.write(chalk.red(`\nBetter luck next time. 😔\n\n`));
