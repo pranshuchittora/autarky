@@ -1,5 +1,5 @@
 {
-  "name": "@pranshuchittora/autarky",
+  "name": "autarky",
   "version": "1.2.0",
   "description": "Liberating disk space from node_modules",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
