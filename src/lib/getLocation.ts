@@ -30,7 +30,7 @@ export const showFiles = (dir, { filelist, RefinedFileList }) => {
         if (validDiff(timeDiff)) {
           let fileDetailsObj: IRefinedListItem = {
             path: absPath,
-            age: fileMTime
+            age: fileMTime,
           };
           // console.log(fileDetailsObj);
           RefinedFileList.push(fileDetailsObj);

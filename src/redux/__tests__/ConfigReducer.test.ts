@@ -10,7 +10,7 @@ describe("Tests the Config Reducer - CHANGE_AGE_CAP", () => {
     const PREV_VALUE = store.getState().config.file_age;
     store.dispatch({
       type: CHANGE_AGE_CAP,
-      payload: { file_age: "SomeString" }
+      payload: { file_age: "SomeString" },
     });
     expect(store.getState().config.file_age).toBe(PREV_VALUE);
   });
@@ -22,8 +22,8 @@ describe("Tests the Config Reducer - UPDATE_DIRS_LIST", () => {
     store.dispatch({
       type: UPDATE_DIRS_LIST,
       payload: {
-        dir_list: FILE_ARR
-      }
+        dir_list: FILE_ARR,
+      },
     });
     expect(store.getState().config.dir_list).toBe(FILE_ARR);
   });

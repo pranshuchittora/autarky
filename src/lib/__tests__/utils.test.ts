@@ -5,22 +5,22 @@ describe("Tests for utils - sortQueriesRefinedPath", () => {
     const UnsortedList = [
       {
         age: 200,
-        path: "file1"
+        path: "file1",
       },
       {
         age: 100,
-        path: "file2"
-      }
+        path: "file2",
+      },
     ];
     expect(sortQueriesRefinedPath(UnsortedList)).toStrictEqual([
       {
         age: 100,
-        path: "file2"
+        path: "file2",
       },
       {
         age: 200,
-        path: "file1"
-      }
+        path: "file1",
+      },
     ]);
   });
 });

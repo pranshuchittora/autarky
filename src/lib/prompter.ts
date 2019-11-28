@@ -15,8 +15,8 @@ export async function promptAgeSelect() {
     {
       type: "number",
       name: "age",
-      message: "How old node_modules you wanna delete? (months)"
-    }
+      message: "How old node_modules you wanna delete? (months)",
+    },
   ]);
 
   store.dispatch({ type: CHANGE_AGE_CAP, payload: { file_age: response.age } });
@@ -42,8 +42,8 @@ export async function promptMultiSelectDir(ListDir: Object[]) {
         }
 
         return true;
-      }
-    }
+      },
+    },
   ]);
   let ListWithSize = [];
   response.selectedDirs.forEach(elm => {
@@ -58,8 +58,8 @@ export async function promptMultiSelectDir(ListDir: Object[]) {
   store.dispatch({
     type: UPDATE_DIRS_LIST,
     payload: {
-      dir_list: ListWithSize
-    }
+      dir_list: ListWithSize,
+    },
   });
 }
 
@@ -73,8 +73,8 @@ export async function promptDeleteConfirm() {
     {
       type: "confirm",
       message: `Confirm deleteing ${count} directories ?`,
-      name: "confirmation"
-    }
+      name: "confirmation",
+    },
   ]);
 
   if (response.confirmation === true) {
@@ -83,9 +83,9 @@ export async function promptDeleteConfirm() {
       chalk.green(
         `\nDeleted ${count} directories successfully 🎉\n
         ${chalk.black(
-          chalk.magentaBright(convertBytes(TOTAL_SIZE))
-        )} now free on your 💻\n\n`
-      )
+          chalk.magentaBright(convertBytes(TOTAL_SIZE)),
+        )} now free on your 💻\n\n`,
+      ),
     );
   } else {
     process.stdout.write(chalk.red(`\nBetter luck next time. 😔\n\n`));
