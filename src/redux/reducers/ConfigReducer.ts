@@ -4,7 +4,7 @@ const InitialState = { file_age: 0, dir_list: [] };
 
 export const R_Config = (
   state = InitialState,
-  action: { payload: Object | any; type: String }
+  action: { payload: Object | any; type: String },
 ) => {
   let newState = { ...state };
   const payload = action.payload;

@@ -32,7 +32,7 @@ export function promptListParser(List: Object[]): Object[] {
         " " +
         chalk.bgBlack(chalk.greenBright(TimeRelative(item.age) + " old")),
       value: item.path,
-      size: FileSize.SIZE_Number
+      size: FileSize.SIZE_Number,
     };
     ParsedList.push(ItemObj);
   });

@@ -20,7 +20,7 @@ describe("Removes files given an array of path", () => {
     const currentDirArr = fs.readdirSync("./");
     expect(
       currentDirArr.includes("single1.temp") &&
-        currentDirArr.includes("single2.temp")
+        currentDirArr.includes("single2.temp"),
     ).toBe(false);
   });
 });

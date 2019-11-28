@@ -1,6 +1,6 @@
 {
   "name": "autarky",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Liberating disk space from node_modules",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
@@ -29,6 +29,7 @@
   "scripts": {
     "watch": "tsc -p tsconfig.dev.json --watch",
     "build": "tsc -p tsconfig.prod.json",
+    "format": "prettier --write 'src/**/*.*'",
     "test": "jest",
     "test-watch": "jest --watchAll",
     "prepublish": "yarn run build"
@@ -45,6 +46,7 @@
     "@types/redux": "^3.6.0",
     "@types/rimraf": "^2.0.3",
     "jest": "^24.9.0",
+    "prettier": "^1.19.1",
     "ts-jest": "^24.2.0",
     "typescript": "^3.7.2"
   },
