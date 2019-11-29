@@ -13,6 +13,9 @@ import store from "./redux/index";
 
 (async function() {
   await promptAgeSelect();
+  process.stdout.write(
+    chalk.green("Indexing files, might take longer than expected...\n"),
+  );
   const QueriedPathList = showFiles(process.cwd(), {
     filelist: [],
     RefinedFileList: [],
