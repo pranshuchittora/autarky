@@ -1,6 +1,6 @@
 {
   "name": "autarky",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Liberating disk space from node_modules",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
