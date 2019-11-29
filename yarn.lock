@@ -1361,10 +1361,10 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-g-factor@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/g-factor/-/g-factor-1.0.1.tgz#292b4cd7fbfbbd178c0c01c45cf2f6259b66d525"
-  integrity sha512-CHiCD//Qg4Mr80UM7IgMrMXev0cCz0CXp3AsWUCHBlKUKoIRC10eV4CW6m2nzCVTWM5pndUYtW4Y7Ff0aOpwJA==
+g-factor@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/g-factor/-/g-factor-1.1.0.tgz#f4dbe4e60d29d25d112b75c374439d28172d0a2e"
+  integrity sha512-ewH9mio29/d+FrAOOYR8LiVH6QL1wgL2RoI9IjBEwvO27u68uawd+KQ/NHNZcGHqOQva8kgqLHHTU1RvEUOpDg==
   dependencies:
     fs "^0.0.1-security"
 
