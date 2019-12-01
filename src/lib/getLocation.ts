@@ -12,7 +12,7 @@ export const showFiles = (dir, { filelist, RefinedFileList }) => {
   try {
     files = fs.readdirSync(dir);
   } catch (e) {
-    console.log("ERR_ACCESS_DENIED", dir);
+    // console.log("ERR_ACCESS_DENIED", dir);
     return { filelist, RefinedFileList };
   }
   files.forEach(function(file) {
@@ -40,7 +40,7 @@ export const showFiles = (dir, { filelist, RefinedFileList }) => {
           .filelist;
       }
     } catch (e) {
-      console.log("ERR_LOCATION_NOT_FOUND", dir);
+      // console.log("ERR_LOCATION_NOT_FOUND", dir);
     }
   });
   return { filelist, RefinedFileList };
