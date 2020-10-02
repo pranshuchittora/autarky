@@ -67,3 +67,4 @@ Author: Pranshu Chittora
 
 [Github](https://github.com/pranshuchittora/)
 [Twitter](https://twitter.com/pranshuchittora)
+[LinkedIn](https://www.linkedin.com/in/pranshuchittora/)
