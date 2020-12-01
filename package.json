@@ -40,7 +40,7 @@
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/inquirer": "^6.5.0",
-    "@types/jest": "^24.0.23",
+    "@types/jest": "^26.0.16",
     "@types/moment": "^2.13.0",
     "@types/node": "^12.12.14",
     "@types/redux": "^3.6.0",
