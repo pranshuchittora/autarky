@@ -2,7 +2,7 @@
   "compilerOptions": {
     "rootDir": "src",
     // "allowSyntheticDefaultImports": true,
-    "types": ["jest"],
+    "types": ["jest","react"],
     "esModuleInterop": true,
     "module": "commonjs",
     "moduleResolution": "node",
@@ -11,7 +11,8 @@
     "strict": false,
     "lib": ["es6", "es2017"],
     "resolveJsonModule": true,
-    "declaration": true
+    "declaration": true,
+    "jsx": "react"
   },
   "exclude": ["node_modules", "dist", "src/lib/tests", "build"]
 }

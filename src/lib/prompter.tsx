@@ -7,19 +7,35 @@ import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "../redux/actionTypes";
 import { promptListParser, findTotalSize } from "./utils";
 import { removeDirBulk } from "./removeDir";
 
+import React from "react";
+import { render } from "ink";
+import { IntegerValidation } from "./validation";
+import TextInput from "../components/TextInput";
+import LogSymbols from "log-symbols";
+
 /**
  * Asks for the module age
  */
 export async function promptAgeSelect() {
-  const response = await inquirer.prompt([
-    {
-      type: "number",
-      name: "age",
-      message: "How old node_modules you wanna delete? (months)",
-    },
-  ]);
+  const label = "How old node_modules you wanna delete? (months)";
 
-  store.dispatch({ type: CHANGE_AGE_CAP, payload: { file_age: response.age } });
+  let value;
+  const handleSubmit = (val: string): void => {
+    value = IntegerValidation.onDone(val);
+    process.stdout.write(`${LogSymbols.success} ${label}: ${value}\n`);
+  };
+
+  const { unmount, waitUntilExit, clear } = render(
+    <TextInput
+      label={label}
+      onChange={IntegerValidation.onChange}
+      submit={handleSubmit}
+    />,
+  );
+
+  await waitUntilExit();
+
+  store.dispatch({ type: CHANGE_AGE_CAP, payload: { file_age: value } });
 }
 
 /**

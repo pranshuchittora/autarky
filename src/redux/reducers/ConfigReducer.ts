@@ -1,6 +1,6 @@
 import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "../actionTypes";
 
-const InitialState = { file_age: 0, dir_list: [] };
+const InitialState = { file_age: null, dir_list: [] };
 
 export const R_Config = (
   state = InitialState,
