@@ -5,11 +5,12 @@ import yn from "yn";
 import { fork } from "child_process";
 import path from "path";
 import LogSymbols from "log-symbols";
-import { Box, Text, Static } from "ink";
+import { Box, Text } from "ink";
 import MultiSelect from "ink-multi-select";
+import Spinner from "ink-spinner";
 
-import { removeDirBulk } from "../lib/removeDir";
 import { IntegerValidation } from "../lib/validation";
+import { findTotalSize } from "../lib/utils";
 import store from "../redux/index";
 import {
   CHANGE_AGE_CAP,
@@ -19,16 +20,7 @@ import {
 import { APPEND_LOGS } from "../redux/reducers/UIReducer";
 import TextInput from "../components/TextInput";
 import Header from "../components/Header";
-import { useSelector } from "react-redux";
-
 import Table from "../components/Table";
-import {
-  sortQueriesRefinedPath,
-  promptListParser,
-  findTotalSize,
-} from "../lib/utils";
-
-import Spinner from "ink-spinner";
 
 const App = () => {
   return (
@@ -50,7 +42,6 @@ const Interrogator = () => {
     const unsubscribe = store.subscribe(() => {
       const newStoreState = store.getState();
       setRStore(newStoreState);
-      // console.log(JSON.stringify(newStoreState, null, 2));
     });
 
     return () => {
@@ -66,11 +57,11 @@ const Interrogator = () => {
   } else if (SelectConfirmation(RStore) === null) {
     question = (
       <>
-        <Table data={ParseDataForTable(SelectDirList(RStore))} count={1} />
+        <Table data={SelectDirList(RStore)} count={1} />
         <ConfirmDeletion count={SelectDirList(RStore)?.length} />
       </>
     );
-  } else if (SelectConfirmation(RStore) === true) {
+  } else {
     question = <RemoveDirs />;
   }
 
@@ -82,29 +73,6 @@ const Interrogator = () => {
       {question}
     </>
   );
-
-  // return (
-  //   <>
-  //     {SelectLogs(RStore).map((item: any) => {
-  //       return <LogMessage key={item.id} {...item} />;
-  //     })}
-
-  //     {SelectFileAge(RStore) === null ? <AgeQuestion /> : <DirSelect />}
-
-  //     {
-  //       <>
-  //         <Table data={ParseDataForTable(SelectDirList(RStore))} count={1} />
-  //         <ConfirmDeletion count={12} />
-  //         </>
-  //     }
-  //     {/* <Table data={ParseDataForTable(SelectDirList(RStore))} count={1} /> */}
-  //     {SelectDirList(RStore) && ! && (
-  //       <>
-
-  //       </>
-  //     )}
-  //   </>
-  // );
 };
 
 const AgeQuestion = () => {
@@ -118,7 +86,6 @@ const AgeQuestion = () => {
       type: APPEND_LOGS,
       payload: { logSymbol: LogSymbols.success, label, value, id: "file_age" },
     });
-    // console.log(JSON.stringify(store.getState(), null, 2));
   };
   return (
     <TextInput
@@ -151,7 +118,9 @@ const DirSelect = () => {
   const [selected, setSelected] = useState(null);
   const [done, setDone] = useState(false);
   useEffect(() => {
-    const child = fork(path.resolve(path.join(__dirname, "child_compute.js")));
+    const child = fork(
+      path.resolve(path.join(__dirname, "..", "lib", "child_compute.js")),
+    );
 
     child.send({ type: "START", payload: SelectFileAge(store.getState()) });
     child.on("error", err => {
@@ -207,8 +176,6 @@ const DirSelect = () => {
         dir_list: items,
       },
     });
-
-    // setSubmitted(true);
   };
 
   const RenderError =
@@ -243,39 +210,6 @@ const DirSelect = () => {
   );
 };
 
-const SelectFileAge = store => {
-  return store.config.file_age;
-};
-const SelectLogs = store => {
-  return store.UI.logs;
-};
-
-const SelectDirList = store => {
-  return store.config.dir_list;
-};
-const SelectConfirmation = store => {
-  return store.config.confirmation;
-};
-
-const ParseDataForTable = data => {
-  return data;
-  // const newData = [...data]
-  // return newData.map(obj => {
-  //   obj.Location = obj.value;
-  //   obj.Size = obj.size_label;
-  //   obj.Time = obj.time_label;
-
-  //   delete obj.value;
-  //   delete obj.size_label;
-  //   delete obj.time_label;
-  //   delete obj.name;
-  //   delete obj.label;
-  //   delete obj.size;
-
-  //   return obj;
-  // });
-};
-
 const ConfirmDeletion = props => {
   const handleChange = q => {
     return q;
@@ -299,8 +233,6 @@ const ConfirmDeletion = props => {
       type: UPDATE_CONFIRMATION,
       payload: Response,
     });
-
-    // console.log(JSON.stringify(store.getState(), null, 2));
   };
   return (
     <TextInput onChange={handleChange} label={label} submit={handleSubmit} />
@@ -317,27 +249,71 @@ const RemoveDirs = () => {
     });
     const TOTAL_SIZE = findTotalSize(Dir_List);
 
-    removeDirBulk(Resolved_Path_List);
-    // `Deleted ${Dir_List?.lengh} directories successfully. `
-    setSuccessMessage(
-      chalk.magentaBright(convertBytes(TOTAL_SIZE)) + " now free on your 💻",
+    const child = fork(
+      path.resolve(
+        path.join(__dirname, "..", "lib", "childProcesses", "delete.js"),
+      ),
     );
-    setDone(true);
+
+    child.send({ type: "START", payload: Resolved_Path_List });
+    child.on("error", err => {
+      console.log("\n\t\tERROR: spawn failed! (" + err + ")");
+    });
+    child.on("message", message => {
+      if (message.type === "DONE") {
+        child.kill();
+
+        store.dispatch({
+          type: APPEND_LOGS,
+          payload: {
+            logSymbol: LogSymbols.success,
+            label: `Deleted ${Dir_List?.length} ${
+              Dir_List?.length > 1 ? "directories" : "directory"
+            } successfully. `,
+            value: "",
+            id: "deleted_dir",
+          },
+        });
+
+        setSuccessMessage(
+          chalk.magentaBright(convertBytes(TOTAL_SIZE)) +
+            " now free on your 💻",
+        );
+        setDone(true);
+      }
+    });
+    return () => {
+      if (!child.killed) child.kill();
+    };
   }, []);
 
-  if (done === false) {
+  if (done) {
     return (
-      <Box flexDirection="column">
-        <Box paddingRight={1}>
-          <Spinner />
-        </Box>
-        <Text>Deleting files and folders...</Text>
+      <Box paddingY={2} justifyContent="center">
+        <Text>{successMessage}</Text>
       </Box>
     );
   }
   return (
-    <Box paddingY={2} justifyContent="center">
-      <Text>{successMessage}</Text>
+    <Box>
+      <Box paddingRight={1}>
+        <Spinner />
+      </Box>
+      <Text>Deleting directories...</Text>
     </Box>
   );
+};
+
+const SelectFileAge = store => {
+  return store.config.file_age;
+};
+const SelectLogs = store => {
+  return store.UI.logs;
+};
+
+const SelectDirList = store => {
+  return store.config.dir_list;
+};
+const SelectConfirmation = store => {
+  return store.config.confirmation;
 };

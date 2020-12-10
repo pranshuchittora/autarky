@@ -1,7 +1,7 @@
 import React from "react";
-import { render, Static } from "ink";
+import { render } from "ink";
 
-import App from "./initApp";
+import App from "./App";
 
 const RenderApp = () => {
   render(<App />);

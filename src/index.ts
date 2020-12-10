@@ -1,40 +1,8 @@
 #!/usr/bin/env node
 
-import chalk from "chalk";
-
-import RenderApp from "./ui/renderApp";
-// import { showFiles } from "./lib/getLocation";
-import {
-  promptMultiSelectDir,
-  promptAgeSelect,
-  promptDeleteConfirm,
-} from "./lib/prompter";
-import { sortQueriesRefinedPath } from "./lib/utils";
-import store from "./redux/index";
+import InitApp from "./ui/renderApp";
 
 (async function() {
-  RenderApp();
-
-  // await promptAgeSelect();
-  // process.stdout.write(
-  //   chalk.green("Indexing files, might take longer than expected...\n"),
-  // );
-  // const QueriedPathList = showFiles(process.cwd(), {
-  //   filelist: [],
-  //   RefinedFileList: [],
-  // });
-
-  // if (QueriedPathList.RefinedFileList.length > 0) {
-  //   QueriedPathList.RefinedFileList = sortQueriesRefinedPath(
-  //     QueriedPathList.RefinedFileList,
-  //   );
-  //   await promptMultiSelectDir(QueriedPathList.RefinedFileList);
-  //   if (Array.isArray(store.getState().config.dir_list))
-  //     await promptDeleteConfirm();
-  // } else {
-  //   await console.log(
-  //     chalk.bgCyan("Oops! Your node_modules are too young to be deleted 😉"),
-  //   );
-  // }
+  InitApp();
   return;
 })();

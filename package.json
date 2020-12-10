@@ -51,9 +51,6 @@
     "prepublish": "yarn run build",
     "redux-devtools": "redux-devtools --hostname=localhost --port=8000"
   },
-  "files": [
-    "build/**/*"
-  ],
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/inquirer": "^6.5.0",
