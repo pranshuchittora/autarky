@@ -3358,6 +3358,13 @@ ink-spinner@^4.0.1:
   dependencies:
     cli-spinners "^2.3.0"
 
+ink-table@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ink-table/-/ink-table-3.0.0.tgz#109fb2ce0709567f0e38d14b2b82f311277a3628"
+  integrity sha512-RtcYjenHKZWjnwVNQ6zSYWMOLKwkWscDAJsqUQXftyjkYho1gGrluGss87NOoIzss0IKr74lKasd6MtlQYALiA==
+  dependencies:
+    object-hash "^2.0.3"
+
 ink-text-input@^3.2.1:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/ink-text-input/-/ink-text-input-3.3.0.tgz#ab1f5e668321b3df7e26be64c327e49ff476f3ce"
@@ -5117,6 +5124,11 @@ object-copy@^0.1.0:
     copy-descriptor "^0.1.0"
     define-property "^0.2.5"
     kind-of "^3.0.3"
+
+object-hash@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.0.3.tgz#d12db044e03cd2ca3d77c0570d87225b02e1e6ea"
+  integrity sha512-JPKn0GMu+Fa3zt3Bmr66JhokJU5BaNBIh4ZeTlaCBzrBsOeXzwcKKAK1tbLiPKgvwmPXsDvvLHoWh5Bm7ofIYg==
 
 object-keys@^1.0.12:
   version "1.1.1"
@@ -7468,6 +7480,11 @@ yn@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
+
+yn@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/yn/-/yn-4.0.0.tgz#611480051ea43b510da1dfdbe177ed159f00a979"
+  integrity sha512-huWiiCS4TxKc4SfgmTwW1K7JmXPPAmuXWYy4j9qjQo4+27Kni8mGhAAi1cloRWmBe2EqcLgt3IGqQoRL/MtPgg==
 
 yoga-layout-prebuilt@^1.9.6:
   version "1.10.0"

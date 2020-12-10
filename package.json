@@ -31,6 +31,7 @@
     "ink-redux": "^1.0.0",
     "ink-select-input": "^4.2.0",
     "ink-spinner": "^4.0.1",
+    "ink-table": "^3.0.0",
     "ink-text-input": "^4.0.1",
     "inquirer": "^7.0.0",
     "log-symbols": "^4.0.0",
@@ -38,7 +39,8 @@
     "react": "^17.0.1",
     "react-redux": "^7.2.2",
     "redux": "^4.0.4",
-    "rimraf": "^3.0.0"
+    "rimraf": "^3.0.0",
+    "yn": "^4.0.0"
   },
   "scripts": {
     "watch": "tsc -p tsconfig.dev.json --watch",

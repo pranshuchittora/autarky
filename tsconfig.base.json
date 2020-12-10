@@ -7,12 +7,13 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "target": "es5",
+    "target": "es6",
     "strict": false,
     "lib": ["es6", "es2017"],
     "resolveJsonModule": true,
     "declaration": true,
-    "jsx": "react"
+    "jsx": "react",
+    "sourceMap": true
   },
   "exclude": ["node_modules", "dist", "src/lib/tests", "build"]
 }
