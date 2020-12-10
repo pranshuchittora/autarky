@@ -10,7 +10,7 @@ import { IPromptSelect, IRefinedListItem } from "./Interfaces";
  *
  * @param timeVal
  */
-export function validDiff(timeVal,FILE_AGE) {
+export function validDiff(timeVal, FILE_AGE) {
   const MinTimeThreshold = TimeMonthToMilli(FILE_AGE);
   return timeVal >= MinTimeThreshold ? true : false;
 }
@@ -29,6 +29,7 @@ export function promptListParser(List: Object[]): Object[] {
       value: item.path,
       size: FileSize.SIZE_Number,
       label:
+        " " +
         path.relative(process.cwd(), item.path) +
         " - " +
         chalk.bgBlack(chalk.magentaBright(FileSize.SIZE_Parsed)) +

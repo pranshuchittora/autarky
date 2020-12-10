@@ -234,9 +234,9 @@ const DirSelect = () => {
   return (
     <>
       {data != null && (
-        <Box marginTop={1} flexDirection="column">
+        <Box flexDirection="column">
           {RenderError}
-          <MultiSelect onSubmit={handleSubmit} items={data} />
+          <MultiSelect onSubmit={handleSubmit} items={data} limit={10} />
         </Box>
       )}
     </>
