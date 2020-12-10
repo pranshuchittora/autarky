@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
+import chalk from "chalk";
+import { convertBytes } from "g-factor";
 import yn from "yn";
 import { fork } from "child_process";
 import path from "path";
@@ -6,6 +8,7 @@ import LogSymbols from "log-symbols";
 import { Box, Text, Static } from "ink";
 import MultiSelect from "ink-multi-select";
 
+import { removeDirBulk } from "../lib/removeDir";
 import { IntegerValidation } from "../lib/validation";
 import store from "../redux/index";
 import {
@@ -19,7 +22,11 @@ import Header from "../components/Header";
 import { useSelector } from "react-redux";
 
 import Table from "../components/Table";
-import { sortQueriesRefinedPath, promptListParser } from "../lib/utils";
+import {
+  sortQueriesRefinedPath,
+  promptListParser,
+  findTotalSize,
+} from "../lib/utils";
 import { showFiles } from "../lib/getLocation";
 import Spinner from "ink-spinner";
 
@@ -47,7 +54,7 @@ const Interrogator = () => {
     });
 
     return () => {
-      // unsubscribe();
+      unsubscribe();
     };
   }, []);
 
@@ -59,12 +66,12 @@ const Interrogator = () => {
   } else if (SelectConfirmation(RStore) === null) {
     question = (
       <>
-        {/* <Table data={ParseDataForTable(SelectDirList(RStore))} count={1} /> */}
+        <Table data={ParseDataForTable(SelectDirList(RStore))} count={1} />
         <ConfirmDeletion count={SelectDirList(RStore)?.length} />
       </>
     );
-  } else {
-    <Spinner />;
+  } else if (SelectConfirmation(RStore) === true) {
+    question = <RemoveDirs />;
   }
 
   return (
@@ -269,5 +276,40 @@ const ConfirmDeletion = props => {
   };
   return (
     <TextInput onChange={handleChange} label={label} submit={handleSubmit} />
+  );
+};
+
+const RemoveDirs = () => {
+  const [done, setDone] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  useEffect(() => {
+    const Dir_List = SelectDirList(store.getState());
+    const Resolved_Path_List = Dir_List.map(e => {
+      return e.value;
+    });
+    const TOTAL_SIZE = findTotalSize(Dir_List);
+
+    removeDirBulk(Resolved_Path_List);
+    // `Deleted ${Dir_List?.lengh} directories successfully. `
+    setSuccessMessage(
+      chalk.magentaBright(convertBytes(TOTAL_SIZE)) + " now free on your 💻",
+    );
+    setDone(true);
+  }, []);
+
+  if (done === false) {
+    return (
+      <Box flexDirection="column">
+        <Box paddingRight={1}>
+          <Spinner />
+        </Box>
+        <Text>Deleting files and folders...</Text>
+      </Box>
+    );
+  }
+  return (
+    <Box paddingY={2} justifyContent="center">
+      <Text>{successMessage}</Text>
+    </Box>
   );
 };
