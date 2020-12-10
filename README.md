@@ -16,7 +16,7 @@
 </div>
 
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
-<img width="90%" src='./docs/assets/Demo.gif'/>
+<img width="90%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Demo.gif'/>
 </div>
 
 ## Installation
@@ -77,7 +77,8 @@ Autarky is build with latest open source technologies.
 - [rimraf](https://github.com/isaacs/rimraf)
 - [chalk](https://github.com/chalk/chalk)
 
---- 
+---
+
 Read [CONTRIBUTING Guide](./CONTRIBUTING.md)
 
 License MIT
