@@ -27,7 +27,7 @@ import {
   promptListParser,
   findTotalSize,
 } from "../lib/utils";
-import { showFiles } from "../lib/getLocation";
+
 import Spinner from "ink-spinner";
 
 const App = () => {
@@ -149,26 +149,50 @@ const LogMessage = props => {
 const DirSelect = () => {
   const [data, setData] = useState(null);
   const [selected, setSelected] = useState(null);
-
+  const [done, setDone] = useState(false);
   useEffect(() => {
     const child = fork(path.resolve(path.join(__dirname, "child_compute.js")));
-    child.send("START");
+
+    child.send({ type: "START", payload: SelectFileAge(store.getState()) });
     child.on("error", err => {
       console.log("\n\t\tERROR: spawn failed! (" + err + ")");
     });
     child.on("message", message => {
-      child.kill();
+      const { type, payload } = message;
+      switch (type) {
+        case "DONE": {
+          child.kill();
 
-      store.dispatch({
-        type: APPEND_LOGS,
-        payload: {
-          logSymbol: LogSymbols.success,
-          label: "Indexing file system.",
-          value: "",
-          id: "indexing_fs",
-        },
-      });
-      setData(message);
+          store.dispatch({
+            type: APPEND_LOGS,
+            payload: {
+              logSymbol: LogSymbols.success,
+              label: "Indexing file system.",
+              value: "",
+              id: "indexing_fs",
+            },
+          });
+          setDone(true);
+          if (Array.isArray(payload) && payload.length == 0) {
+            store.dispatch({
+              type: APPEND_LOGS,
+              payload: {
+                logSymbol: LogSymbols.info,
+                label: "Oops! Your node_modules are too young to be deleted.",
+                value: "",
+                id: "no_dir_found",
+              },
+            });
+            process.exit(0);
+          }
+
+          setData(payload);
+          break;
+        }
+        case "MESSAGE": {
+          console.log(payload);
+        }
+      }
     });
     return () => {
       !child.killed ? child.kill() : null;
@@ -198,14 +222,18 @@ const DirSelect = () => {
       </Box>
     );
 
+  if (!done) {
+    return (
+      <Box>
+        <Spinner />
+        <Text> Indexing the Disk</Text>
+      </Box>
+    );
+  }
+
   return (
     <>
-      {data === null ? (
-        <Box>
-          <Spinner />
-          <Text> Indexing the Disk</Text>
-        </Box>
-      ) : (
+      {data != null && (
         <Box marginTop={1} flexDirection="column">
           {RenderError}
           <MultiSelect onSubmit={handleSubmit} items={data} />

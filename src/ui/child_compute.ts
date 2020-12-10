@@ -1,8 +1,9 @@
 import { sortQueriesRefinedPath, promptListParser } from "../lib/utils";
-import { showFiles } from "../lib/getLocation";
+import { FSSearch } from "../lib/getLocation";
 
-const StartIndexing = () => {
-  const QueriedPathList = showFiles(process.cwd(), {
+const StartIndexing = FILE_AGE => {
+  const FSSearchInst = new FSSearch(FILE_AGE);
+  const QueriedPathList = FSSearchInst.showFiles(process.cwd(), {
     filelist: [],
     RefinedFileList: [],
   });
@@ -15,9 +16,12 @@ const StartIndexing = () => {
   }
   return [];
 };
+
 process.on("message", message => {
-  if (message == "START") {
-    const resp = StartIndexing();
-    process.send(resp);
+  switch (message.type) {
+    case "START":
+      const resp = StartIndexing(message.payload);
+      process.send({ type: "DONE", payload: resp });
+      break;
   }
 });

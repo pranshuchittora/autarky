@@ -5,13 +5,13 @@ import getSize from "g-factor";
 import { TimeRelative } from "./time";
 import { TimeMonthToMilli } from "./time";
 import { IPromptSelect, IRefinedListItem } from "./Interfaces";
-import store from "../redux/index";
+
 /**
  *
  * @param timeVal
  */
-export function validDiff(timeVal) {
-  const MinTimeThreshold = TimeMonthToMilli(store.getState().config.file_age);
+export function validDiff(timeVal,FILE_AGE) {
+  const MinTimeThreshold = TimeMonthToMilli(FILE_AGE);
   return timeVal >= MinTimeThreshold ? true : false;
 }
 

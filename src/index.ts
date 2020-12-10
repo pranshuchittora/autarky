@@ -3,7 +3,7 @@
 import chalk from "chalk";
 
 import RenderApp from "./ui/renderApp";
-import { showFiles } from "./lib/getLocation";
+// import { showFiles } from "./lib/getLocation";
 import {
   promptMultiSelectDir,
   promptAgeSelect,
