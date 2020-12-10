@@ -16,7 +16,11 @@
 </div>
 
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
+<<<<<<< HEAD
 <img width="90%" src='./docs/assets/Demo.gif'/>
+=======
+<img width="90%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Demo.gif'/>
+>>>>>>> origin/refactor/ink
 </div>
 
 ## Installation
@@ -57,6 +61,28 @@ Autarky works by traversing all the child directories recursively relative to th
 2. Select the `node_modules` which you want to delete.
 3. Confirm deletion.
 4. Done! (No need to pay for more storage.)
+<<<<<<< HEAD
+=======
+
+---
+
+## Internals
+
+Autarky is build with latest open source technologies.
+
+1. UI - The user unterface is written in React. Using the Ink's reconciler for rendering the react components.
+2. State Management - The challenge of sharing data b/w UI and the process is achieved using Redux.
+3. Heavy Computation - Large data crunching is done on child processes.
+
+### Building Blocks
+
+- [React](https://reactjs.org/)
+- [Redux](https://redux.js.org/)
+- [Ink](https://github.com/vadimdemedes/ink)
+- [moment](https://momentjs.com/)
+- [rimraf](https://github.com/isaacs/rimraf)
+- [chalk](https://github.com/chalk/chalk)
+>>>>>>> origin/refactor/ink
 
 ---
 
