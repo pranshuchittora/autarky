@@ -5,13 +5,13 @@ import getSize from "g-factor";
 import { TimeRelative } from "./time";
 import { TimeMonthToMilli } from "./time";
 import { IPromptSelect, IRefinedListItem } from "./Interfaces";
-import store from "../redux/index";
+
 /**
  *
  * @param timeVal
  */
-export function validDiff(timeVal) {
-  const MinTimeThreshold = TimeMonthToMilli(store.getState().config.file_age);
+export function validDiff(timeVal, FILE_AGE) {
+  const MinTimeThreshold = TimeMonthToMilli(FILE_AGE);
   return timeVal >= MinTimeThreshold ? true : false;
 }
 
@@ -25,14 +25,18 @@ export function promptListParser(List: Object[]): Object[] {
   List.forEach((item: IRefinedListItem) => {
     const FileSize = getSize(item.path);
     let ItemObj: IPromptSelect = {
-      name:
+      name: path.relative(process.cwd(), item.path),
+      value: item.path,
+      size: FileSize.SIZE_Number,
+      label:
+        " " +
         path.relative(process.cwd(), item.path) +
         " - " +
         chalk.bgBlack(chalk.magentaBright(FileSize.SIZE_Parsed)) +
         " " +
         chalk.bgBlack(chalk.greenBright(TimeRelative(item.age) + " old")),
-      value: item.path,
-      size: FileSize.SIZE_Number,
+      size_label: FileSize.SIZE_Parsed,
+      time_label: TimeRelative(item.age) + " old",
     };
     ParsedList.push(ItemObj);
   });

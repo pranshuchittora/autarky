@@ -1,10 +1,10 @@
 {
   "name": "autarky",
-  "version": "1.2.4",
+  "version": "2.0.0-alpha.1",
   "description": "Liberating disk space from node_modules",
   "author": "Pranshu Chittora <pranshuchittora17@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/pranshuchittora/autarky#readme",
+  "homepage": "https://autarky.js.org",
   "repository": {
     "type": "git",
     "url": "git://github.com/pranshuchittora/autarky.git"
@@ -18,13 +18,29 @@
   "main": "build/index",
   "types": "build/index.d.ts",
   "dependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-redux": "^7.1.11",
     "chalk": "^3.0.0",
     "fs": "^0.0.1-security",
     "g-factor": "^1.1.0",
+    "ink": "^3.0.8",
+    "ink-big-text": "^1.2.0",
+    "ink-confirm-input": "^2.0.0",
+    "ink-gradient": "^2.0.0",
+    "ink-multi-select": "^2.0.0",
+    "ink-redux": "^1.0.0",
+    "ink-select-input": "^4.2.0",
+    "ink-spinner": "^4.0.1",
+    "ink-table": "^3.0.0",
+    "ink-text-input": "^4.0.1",
     "inquirer": "^7.0.0",
+    "log-symbols": "^4.0.0",
     "moment": "^2.24.0",
+    "react": "^17.0.1",
+    "react-redux": "^7.2.2",
     "redux": "^4.0.4",
-    "rimraf": "^3.0.0"
+    "rimraf": "^3.0.0",
+    "yn": "^4.0.0"
   },
   "scripts": {
     "watch": "tsc -p tsconfig.dev.json --watch",
@@ -32,23 +48,22 @@
     "format": "prettier --write 'src/**/*.*'",
     "test": "jest",
     "test-watch": "jest --watchAll",
-    "prepublish": "yarn run build"
+    "prepublish": "yarn run build",
+    "redux-devtools": "redux-devtools --hostname=localhost --port=8000"
   },
-  "files": [
-    "build/**/*"
-  ],
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/inquirer": "^6.5.0",
-    "@types/jest": "^24.0.23",
+    "@types/jest": "^26.0.18",
     "@types/moment": "^2.13.0",
     "@types/node": "^12.12.14",
     "@types/redux": "^3.6.0",
     "@types/rimraf": "^2.0.3",
-    "jest": "^24.9.0",
+    "jest": "^26.6.3",
     "prettier": "^1.19.1",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.2"
+    "redux-devtools-cli": "^1.0.0-4",
+    "ts-jest": "^26.4.4",
+    "typescript": "^4.1.2"
   },
   "keywords": [
     "cli",
