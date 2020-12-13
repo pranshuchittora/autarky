@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-import InitApp from "./ui/renderApp";
+import InitApp from "@app/ui/renderApp";
 
 (async function() {
   InitApp();

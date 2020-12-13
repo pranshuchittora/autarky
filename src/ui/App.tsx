@@ -118,15 +118,13 @@ const DirSelect = () => {
   const [selected, setSelected] = useState(null);
   const [done, setDone] = useState(false);
   useEffect(() => {
-    const child = fork(
-      path.resolve(path.join(__dirname, "..", "lib", "child_compute.js")),
-    );
+    const child = fork(path.resolve(__dirname, "child_find.js"));
 
     child.send({ type: "START", payload: SelectFileAge(store.getState()) });
     child.on("error", err => {
       console.log("\n\t\tERROR: spawn failed! (" + err + ")");
     });
-    child.on("message", message => {
+    child.on("message", (message: any) => {
       const { type, payload } = message;
       switch (type) {
         case "DONE": {
@@ -249,17 +247,13 @@ const RemoveDirs = () => {
     });
     const TOTAL_SIZE = findTotalSize(Dir_List);
 
-    const child = fork(
-      path.resolve(
-        path.join(__dirname, "..", "lib", "childProcesses", "delete.js"),
-      ),
-    );
+    const child = fork(path.resolve(__dirname, "child_delete.js"));
 
     child.send({ type: "START", payload: Resolved_Path_List });
     child.on("error", err => {
       console.log("\n\t\tERROR: spawn failed! (" + err + ")");
     });
-    child.on("message", message => {
+    child.on("message", (message: any) => {
       if (message.type === "DONE") {
         child.kill();
 

@@ -2,6 +2,7 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "sourceMap": true,
-    "outDir": "dist"
+    "target": "es6",
+    "esModuleInterop": true
   }
 }
