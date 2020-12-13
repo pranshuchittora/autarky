@@ -1,8 +1,8 @@
-import {
-  CHANGE_AGE_CAP,
-  UPDATE_DIRS_LIST,
-  UPDATE_CONFIRMATION,
-} from "../actionTypes";
+const CHANGE_AGE_CAP = "CHANGE_AGE_CAP";
+const UPDATE_DIRS_LIST = "UPDATE_DIRS";
+const UPDATE_CONFIRMATION = "UPDATE_CONFIRMATION";
+
+export { CHANGE_AGE_CAP, UPDATE_DIRS_LIST, UPDATE_CONFIRMATION };
 
 const InitialState = { file_age: null, dir_list: null, confirmation: null };
 

@@ -1,5 +1,5 @@
-import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "../actionTypes";
-import store from "../index";
+import { CHANGE_AGE_CAP, UPDATE_DIRS_LIST } from "@app/redux/reducers/ConfigReducer";
+import store from "@app/redux/index";
 
 describe("Tests the Config Reducer - CHANGE_AGE_CAP", () => {
   test("Changes the AGE", () => {

@@ -1,4 +1,4 @@
-import { removeDirBulk } from "../removeDir";
+import { removeDirBulk } from "@app/lib/removeDir";
 
 const RemoveDirectories = Resolved_Path_List => {
   removeDirBulk(Resolved_Path_List);

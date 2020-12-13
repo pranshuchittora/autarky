@@ -1,4 +1,14 @@
-import * as actionTypes from "../actionTypes";
+import {
+  CHANGE_AGE_CAP,
+  UPDATE_CONFIRMATION,
+  UPDATE_DIRS_LIST,
+} from "@app/redux/reducers/ConfigReducer";
+
+const actionTypes = {
+  CHANGE_AGE_CAP,
+  UPDATE_CONFIRMATION,
+  UPDATE_DIRS_LIST,
+};
 
 describe("Action types", () => {
   test("Action types must be of type string", () => {

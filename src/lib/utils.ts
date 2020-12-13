@@ -2,9 +2,9 @@ import path from "path";
 import chalk from "chalk";
 import getSize from "g-factor";
 
-import { TimeRelative } from "./time";
-import { TimeMonthToMilli } from "./time";
-import { IPromptSelect, IRefinedListItem } from "./Interfaces";
+import { TimeRelative } from "@app/lib/time";
+import { TimeMonthToMilli } from "@app/lib/time";
+import { IPromptSelect, IRefinedListItem } from "@app/lib/Interfaces";
 
 /**
  *

@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 
-import RootReducer from "./reducers/index";
+import RootReducer from "@app/redux/reducers/index";
 
 let store = createStore(RootReducer);
 

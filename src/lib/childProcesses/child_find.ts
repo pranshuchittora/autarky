@@ -1,5 +1,5 @@
-import { sortQueriesRefinedPath, promptListParser } from "../utils";
-import { FSSearch } from "../getLocation";
+import { sortQueriesRefinedPath, promptListParser } from "@app/lib/utils";
+import { FSSearch } from "@app/lib/getLocation";
 
 const StartIndexing = FILE_AGE => {
   const FSSearchInst = new FSSearch(FILE_AGE);

@@ -9,3 +9,5 @@ const Loader = props => {
     </Box>
   );
 };
+
+export default Loader;

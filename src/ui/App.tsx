@@ -9,18 +9,18 @@ import { Box, Text } from "ink";
 import MultiSelect from "ink-multi-select";
 import Spinner from "ink-spinner";
 
-import { IntegerValidation } from "../lib/validation";
-import { findTotalSize } from "../lib/utils";
-import store from "../redux/index";
+import { IntegerValidation } from "@app/lib/validation";
+import { findTotalSize } from "@app/lib/utils";
+import store from "@app/redux/index";
 import {
   CHANGE_AGE_CAP,
   UPDATE_DIRS_LIST,
   UPDATE_CONFIRMATION,
-} from "../redux/actionTypes";
-import { APPEND_LOGS } from "../redux/reducers/UIReducer";
-import TextInput from "../components/TextInput";
-import Header from "../components/Header";
-import Table from "../components/Table";
+} from "@app/redux/reducers/ConfigReducer";
+import { APPEND_LOGS } from "@app/redux/reducers/UIReducer";
+import TextInput from "@app/ui/components/TextInput";
+import Header from "@app/ui/components/Header";
+import Table from "@app/ui/components/Table";
 
 const App = () => {
   return (
@@ -186,7 +186,7 @@ const DirSelect = () => {
   const RenderError = (
     <Box borderStyle="round" justifyContent="center">
       {Array.isArray(selected) && selected.length == 0 ? (
-        <Text color="redBright">Selet atleast one</Text>
+        <Text color="redBright">Select atleast one.</Text>
       ) : (
         <Text color="yellowBright">Selet directories to be deleted.</Text>
       )}
