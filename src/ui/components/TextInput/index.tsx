@@ -22,7 +22,7 @@ const TextInput = props => {
     <>
       <Box>
         <Box marginRight={2}>
-          <Spinner />
+          <Spinner type="dots12" />
         </Box>
         <Box marginRight={1}>
           <Text>{props.label}</Text>
