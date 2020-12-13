@@ -2,18 +2,23 @@
   "compilerOptions": {
     "rootDir": "src",
     // "allowSyntheticDefaultImports": true,
-    "types": ["jest","react"],
+    
+    "types": ["jest", "react"],
     "esModuleInterop": true,
-    "module": "commonjs",
+    "module": "CommonJS",
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "target": "es6",
     "strict": false,
     "lib": ["es6", "es2017"],
     "resolveJsonModule": true,
-    "declaration": true,
+    // "declaration": true,
     "jsx": "react",
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["src/*"]
+    }
   },
-  "exclude": ["node_modules", "dist", "src/lib/tests", "build"]
+
+  "include": ["src"]
 }

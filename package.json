@@ -25,11 +25,8 @@
     "g-factor": "^1.1.0",
     "ink": "^3.0.8",
     "ink-big-text": "^1.2.0",
-    "ink-confirm-input": "^2.0.0",
     "ink-gradient": "^2.0.0",
     "ink-multi-select": "^2.0.0",
-    "ink-redux": "^1.0.0",
-    "ink-select-input": "^4.2.0",
     "ink-spinner": "^4.0.1",
     "ink-table": "^3.0.0",
     "ink-text-input": "^4.0.1",
@@ -41,27 +38,36 @@
     "yn": "^4.0.0"
   },
   "scripts": {
-    "watch": "tsc -p tsconfig.dev.json --watch",
-    "build": "yarn run format &&  tsc -p tsconfig.prod.json",
+    "build": "NODE_ENV='production' npx webpack --config webpack.config.js",
     "format": "prettier --write 'src/**/*.*'",
     "test": "jest",
-    "test-watch": "jest --watchAll",
     "prepublish": "yarn run build",
-    "redux-devtools": "redux-devtools --hostname=localhost --port=8000"
+    "watch": "NODE_ENV='development' webpack --config webpack.config.js",
+    "watch:tsc": "tsc -p tsconfig.json --watch",
+    "watch:test": "jest --watchAll"
   },
   "devDependencies": {
     "@types/chalk": "^2.2.0",
     "@types/inquirer": "^6.5.0",
     "@types/jest": "^26.0.18",
     "@types/moment": "^2.13.0",
-    "@types/node": "^12.12.14",
+    "@types/node": "^14.14.13",
     "@types/redux": "^3.6.0",
     "@types/rimraf": "^2.0.3",
     "jest": "^26.6.3",
     "prettier": "^1.19.1",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.2"
+    "ts-loader": "^8.0.12",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "typescript": "^4.1.2",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-node-externals": "^2.5.2"
   },
+  "files": [
+    "build",
+    "!**/__tests__"
+  ],
   "keywords": [
     "cli",
     "typescript",

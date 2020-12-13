@@ -9,18 +9,18 @@ import { Box, Text } from "ink";
 import MultiSelect from "ink-multi-select";
 import Spinner from "ink-spinner";
 
-import { IntegerValidation } from "../lib/validation";
-import { findTotalSize } from "../lib/utils";
-import store from "../redux/index";
+import { IntegerValidation } from "@app/lib/validation";
+import { findTotalSize } from "@app/lib/utils";
+import store from "@app/redux/index";
 import {
   CHANGE_AGE_CAP,
   UPDATE_DIRS_LIST,
   UPDATE_CONFIRMATION,
-} from "../redux/actionTypes";
-import { APPEND_LOGS } from "../redux/reducers/UIReducer";
-import TextInput from "../components/TextInput";
-import Header from "../components/Header";
-import Table from "../components/Table";
+} from "@app/redux/reducers/ConfigReducer";
+import { APPEND_LOGS } from "@app/redux/reducers/UIReducer";
+import TextInput from "@app/ui/components/TextInput";
+import Header from "@app/ui/components/Header";
+import Table from "@app/ui/components/Table";
 
 const App = () => {
   return (
@@ -62,7 +62,12 @@ const Interrogator = () => {
       </>
     );
   } else {
-    question = <RemoveDirs />;
+    question = (
+      <>
+        <Table data={SelectDirList(RStore)} count={1} />
+        <RemoveDirs />
+      </>
+    );
   }
 
   return (
@@ -118,15 +123,13 @@ const DirSelect = () => {
   const [selected, setSelected] = useState(null);
   const [done, setDone] = useState(false);
   useEffect(() => {
-    const child = fork(
-      path.resolve(path.join(__dirname, "..", "lib", "child_compute.js")),
-    );
+    const child = fork(path.resolve(__dirname, "child_find.js"));
 
     child.send({ type: "START", payload: SelectFileAge(store.getState()) });
     child.on("error", err => {
       console.log("\n\t\tERROR: spawn failed! (" + err + ")");
     });
-    child.on("message", message => {
+    child.on("message", (message: any) => {
       const { type, payload } = message;
       switch (type) {
         case "DONE": {
@@ -170,24 +173,25 @@ const DirSelect = () => {
 
   const handleSubmit = items => {
     setSelected(items);
-    store.dispatch({
-      type: UPDATE_DIRS_LIST,
-      payload: {
-        dir_list: items,
-      },
-    });
+    if (Array.isArray(items) && items.length > 0) {
+      store.dispatch({
+        type: UPDATE_DIRS_LIST,
+        payload: {
+          dir_list: items,
+        },
+      });
+    }
   };
 
-  const RenderError =
-    Array.isArray(selected) && selected.length == 0 ? (
-      <Box>
-        <Text color="red">Selet atleast one</Text>
-      </Box>
-    ) : (
-      <Box>
-        <Text color="yello">Selet directories to be deleted.</Text>
-      </Box>
-    );
+  const RenderError = (
+    <Box borderStyle="round" justifyContent="center">
+      {Array.isArray(selected) && selected.length == 0 ? (
+        <Text color="redBright">Select atleast one.</Text>
+      ) : (
+        <Text color="yellowBright">Selet directories to be deleted.</Text>
+      )}
+    </Box>
+  );
 
   if (!done) {
     return (
@@ -229,6 +233,11 @@ const ConfirmDeletion = props => {
         id: "confirm_deletion",
       },
     });
+
+    if (Response === false) {
+      process.exit(0);
+    }
+
     store.dispatch({
       type: UPDATE_CONFIRMATION,
       payload: Response,
@@ -249,17 +258,13 @@ const RemoveDirs = () => {
     });
     const TOTAL_SIZE = findTotalSize(Dir_List);
 
-    const child = fork(
-      path.resolve(
-        path.join(__dirname, "..", "lib", "childProcesses", "delete.js"),
-      ),
-    );
+    const child = fork(path.resolve(__dirname, "child_delete.js"));
 
     child.send({ type: "START", payload: Resolved_Path_List });
     child.on("error", err => {
       console.log("\n\t\tERROR: spawn failed! (" + err + ")");
     });
-    child.on("message", message => {
+    child.on("message", (message: any) => {
       if (message.type === "DONE") {
         child.kill();
 

@@ -2,8 +2,8 @@ import * as fs from "fs";
 import * as path from "path";
 import getSize from "g-factor";
 
-import { validDiff } from "./utils";
-import { IRefinedListItem } from "./Interfaces";
+import { validDiff } from "@app/lib/utils";
+import { IRefinedListItem } from "@app/lib/Interfaces";
 export class FSSearch {
   FILE_AGE;
   constructor(FILE_AGE) {
