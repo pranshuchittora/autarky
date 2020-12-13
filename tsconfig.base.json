@@ -2,6 +2,7 @@
   "compilerOptions": {
     "rootDir": "src",
     // "allowSyntheticDefaultImports": true,
+    
     "types": ["jest", "react"],
     "esModuleInterop": true,
     "module": "CommonJS",

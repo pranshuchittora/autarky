@@ -3,6 +3,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "target": "es6",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "noEmit": true
   }
 }

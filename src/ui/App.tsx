@@ -62,7 +62,12 @@ const Interrogator = () => {
       </>
     );
   } else {
-    question = <RemoveDirs />;
+    question = (
+      <>
+        <Table data={SelectDirList(RStore)} count={1} />
+        <RemoveDirs />
+      </>
+    );
   }
 
   return (
@@ -168,24 +173,25 @@ const DirSelect = () => {
 
   const handleSubmit = items => {
     setSelected(items);
-    store.dispatch({
-      type: UPDATE_DIRS_LIST,
-      payload: {
-        dir_list: items,
-      },
-    });
+    if (Array.isArray(items) && items.length > 0) {
+      store.dispatch({
+        type: UPDATE_DIRS_LIST,
+        payload: {
+          dir_list: items,
+        },
+      });
+    }
   };
 
-  const RenderError =
-    Array.isArray(selected) && selected.length == 0 ? (
-      <Box>
-        <Text color="red">Selet atleast one</Text>
-      </Box>
-    ) : (
-      <Box>
-        <Text color="yello">Selet directories to be deleted.</Text>
-      </Box>
-    );
+  const RenderError = (
+    <Box borderStyle="round" justifyContent="center">
+      {Array.isArray(selected) && selected.length == 0 ? (
+        <Text color="redBright">Selet atleast one</Text>
+      ) : (
+        <Text color="yellowBright">Selet directories to be deleted.</Text>
+      )}
+    </Box>
+  );
 
   if (!done) {
     return (
@@ -227,6 +233,11 @@ const ConfirmDeletion = props => {
         id: "confirm_deletion",
       },
     });
+
+    if (Response === false) {
+      process.exit(0);
+    }
+
     store.dispatch({
       type: UPDATE_CONFIRMATION,
       payload: Response,
