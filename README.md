@@ -1,4 +1,6 @@
-<h1>Autarky - Liberating disk space from 📁 node_modules</h1>
+<div align="center">
+<img src="https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Banner.png" />
+</div>
 
 ![npm](https://img.shields.io/npm/v/autarky)
 ![downloads](https://img.shields.io/npm/dm/autarky?style=flat)
@@ -7,6 +9,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/ca50bed68e1c8f074c5f/maintainability)](https://codeclimate.com/github/pranshuchittora/autarky/maintainability)
 ![GitHub stars](https://img.shields.io/github/stars/pranshuchittora/autarky?style=social)
 
+<br/>
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
 <img width="95%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Demo.gif'/>
 </div>
