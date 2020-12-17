@@ -1,16 +1,12 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 
-import store from "@app/redux/index";
-
-import Table from "@app/ui/components/Table";
-
 import {
   AgeQuestion,
   DirSelect,
   ConfirmDeletion,
   RemoveDirs,
 } from "@app/ui/containers/Interrogator/Questions";
-
+import store from "@app/redux/index";
 import {
   SelectConfirmation,
   SelectDirList,
@@ -19,7 +15,9 @@ import {
 } from "@app/redux/selectors";
 
 import LogMessage from "@app/ui/components/LogMessage";
-const Interrogator = () => {
+import Table from "@app/ui/components/Table";
+
+const Interrogator: React.FunctionComponent = () => {
   const [RStore, setRStore] = useState(store.getState());
 
   useEffect(() => {
@@ -41,14 +39,14 @@ const Interrogator = () => {
   } else if (SelectConfirmation(RStore) === null) {
     question = (
       <>
-        <Table data={SelectDirList(RStore)} count={1} />
+        <Table data={SelectDirList(RStore)} />
         <ConfirmDeletion count={SelectDirList(RStore)?.length} />
       </>
     );
   } else {
     question = (
       <>
-        <Table data={SelectDirList(RStore)} count={1} />
+        <Table data={SelectDirList(RStore)} />
         <RemoveDirs />
       </>
     );
