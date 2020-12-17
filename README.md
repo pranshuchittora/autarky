@@ -16,7 +16,7 @@
 </div>
 
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
-<img width="90%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Demo.gif'/>
+<img width="90%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Demo.svg'/>
 </div>
 
 ## Installation
@@ -46,7 +46,7 @@ It's 2019 and I got ran out of storage in my laptop after a thorough analysis I 
 I also have a few projects which I touch once in a blue moon, hence they end up eating a lot of space. On the other hand, picking & removing `node_modules` manually is a tedious process. So I thought why not automate it.
 
 <div  align="center" style="filter: drop-shadow(0px 0px 10px #222);">
-<img width="40%"  src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/heavy.png'/>
+<img width="70%"  src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/heavy.png'/>
 </div>
 
 ### How it works
