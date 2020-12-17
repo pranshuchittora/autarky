@@ -3,7 +3,13 @@ import { Box, Text } from "ink";
 import Spinner from "ink-spinner";
 import InkTextInput from "ink-text-input";
 
-const TextInput = props => {
+interface ITextInputProps {
+  onChange: (string) => string;
+  submit: (string) => void;
+  label: string;
+}
+
+const TextInput: React.FunctionComponent<ITextInputProps> = props => {
   const [query, setQuery] = useState<string>("");
   const [submitted, setSubmitted] = useState<boolean>(false);
   const handleChange = (q: string) => {

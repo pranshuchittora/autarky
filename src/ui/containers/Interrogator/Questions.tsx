@@ -18,17 +18,15 @@ import {
   UPDATE_CONFIRMATION,
 } from "@app/redux/reducers/ConfigReducer";
 import { APPEND_LOGS } from "@app/redux/reducers/UIReducer";
-import TextInput from "@app/ui/components/TextInput";
-import Header from "@app/ui/components/Header";
-import Table from "@app/ui/components/Table";
 import {
   SelectConfirmation,
   SelectDirList,
   SelectFileAge,
   SelectLogs,
 } from "@app/redux/selectors";
+import TextInput from "@app/ui/components/TextInput";
 
-export const AgeQuestion = () => {
+export const AgeQuestion: React.FunctionComponent = () => {
   const label = "How old node_modules you wanna delete? (months)";
 
   const handleSubmit = (val: string): void => {
@@ -49,7 +47,7 @@ export const AgeQuestion = () => {
   );
 };
 
-export const DirSelect = () => {
+export const DirSelect: React.FunctionComponent = () => {
   const [data, setData] = useState(null);
   const [selected, setSelected] = useState(null);
   const [done, setDone] = useState(false);
@@ -145,7 +143,10 @@ export const DirSelect = () => {
   );
 };
 
-export const ConfirmDeletion = props => {
+interface IConfirmDeletionProps {
+  count: number;
+}
+export const ConfirmDeletion: React.FunctionComponent<IConfirmDeletionProps> = props => {
   const handleChange = q => {
     return q;
   };

@@ -1,7 +1,11 @@
 import React, { useMemo } from "react";
 import InkTable from "ink-table";
 
-const Table = props => {
+interface ITableProps {
+  data: any[];
+}
+
+const Table: React.FunctionComponent<ITableProps> = props => {
   const data = useMemo(() => {
     const newData = [...props.data];
     return newData.map(obj => {
@@ -16,4 +20,3 @@ const Table = props => {
 };
 
 export default Table;
-

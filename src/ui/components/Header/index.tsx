@@ -3,7 +3,7 @@ import { render, Box, Text } from "ink";
 import Gradient from "ink-gradient";
 import BigText from "ink-big-text";
 
-const Header = () => {
+const Header: React.FunctionComponent = () => {
   return (
     <Box justifyContent="center">
       <Gradient name="retro">
