@@ -16,7 +16,7 @@
 </div>
 
 <div align="center" style="filter: drop-shadow(0px 0px 10px #222);">
-<img width="90%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Demo.svg'/>
+<img width="90%" src='https://raw.githubusercontent.com/pranshuchittora/autarky/master/docs/assets/Demo.gif'/>
 </div>
 
 ## Installation
