@@ -32,9 +32,9 @@ export function promptListParser(List: Object[]): Object[] {
         " " +
         path.relative(process.cwd(), item.path) +
         " - " +
-        chalk.bgBlack(chalk.magentaBright(FileSize.SIZE_Parsed)) +
+        chalk.magentaBright(FileSize.SIZE_Parsed) +
         " " +
-        chalk.bgBlack(chalk.greenBright(TimeRelative(item.age) + " old")),
+        chalk.cyanBright(TimeRelative(item.age) + " old"),
       size_label: FileSize.SIZE_Parsed,
       time_label: TimeRelative(item.age) + " old",
     };

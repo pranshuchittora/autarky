@@ -49,6 +49,7 @@ export const AgeQuestion: React.FunctionComponent = () => {
 
 export const DirSelect: React.FunctionComponent = () => {
   const [data, setData] = useState(null);
+  const [selectedCount, setSelectedCount] = useState<number>(0);
   const [selected, setSelected] = useState(null);
   const [done, setDone] = useState(false);
   useEffect(() => {
@@ -112,14 +113,47 @@ export const DirSelect: React.FunctionComponent = () => {
     }
   };
 
-  const RenderError = (
-    <Box borderStyle="round" justifyContent="center">
-      {Array.isArray(selected) && selected.length == 0 ? (
-        <Text color="redBright">Select atleast one.</Text>
-      ) : (
-        <Text color="yellowBright">Selet directories to be deleted.</Text>
-      )}
-    </Box>
+  const handleSelect = () => {
+    setSelectedCount(selectedCount + 1);
+  };
+  const handleUnSelect = () => {
+    setSelectedCount(selectedCount - 1);
+  };
+  const RenderInstructionsAndError = (
+    <>
+      <Box borderStyle="round" justifyContent="center">
+        {Array.isArray(selected) && selected.length == 0 ? (
+          <Text color="redBright">Select atleast one.</Text>
+        ) : (
+          <Text color="yellowBright">Selet directories to be deleted.</Text>
+        )}
+      </Box>
+      <Box
+        display="flex"
+        flexDirection="row"
+
+        // justifyContent="space-between"
+      >
+        <Box
+          borderStyle="single"
+          borderColor="gray"
+          flexGrow={3}
+          justifyContent="center"
+        >
+          <Text color="yellowBright">
+            {"Press <space> to select, <return> to continue"}
+          </Text>
+        </Box>
+        <Box
+          borderStyle="single"
+          borderColor="gray"
+          flexGrow={1}
+          justifyContent="center"
+        >
+          <Text color="greenBright">{`Selected: ${selectedCount}`}</Text>
+        </Box>
+      </Box>
+    </>
   );
 
   if (!done) {
@@ -135,8 +169,14 @@ export const DirSelect: React.FunctionComponent = () => {
     <>
       {data != null && (
         <Box flexDirection="column">
-          {RenderError}
-          <MultiSelect onSubmit={handleSubmit} items={data} limit={10} />
+          {RenderInstructionsAndError}
+          <MultiSelect
+            onSelect={handleSelect}
+            onUnselect={handleUnSelect}
+            onSubmit={handleSubmit}
+            items={data}
+            limit={10}
+          />
         </Box>
       )}
     </>
@@ -151,7 +191,7 @@ export const ConfirmDeletion: React.FunctionComponent<IConfirmDeletionProps> = p
     return q;
   };
 
-  const label = `Confirm deleteing ${props.count} directories ? (y/n)`;
+  const label = `Confirm deleting ${props.count} directories ? (y/n)`;
 
   const handleSubmit = (val: string): void => {
     const Response = yn(val);
