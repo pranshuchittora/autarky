@@ -125,7 +125,7 @@ export const DirSelect: React.FunctionComponent = () => {
         {Array.isArray(selected) && selected.length == 0 ? (
           <Text color="redBright">Select atleast one.</Text>
         ) : (
-          <Text color="yellowBright">Selet directories to be deleted.</Text>
+          <Text color="yellowBright">Select directories to be deleted.</Text>
         )}
       </Box>
       <Box
