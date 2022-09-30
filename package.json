@@ -29,7 +29,7 @@
     "ink-table": "3.0.0",
     "ink-text-input": "4.0.1",
     "log-symbols": "4.0.0",
-    "moment": "2.24.0",
+    "moment": "2.29.4",
     "react": "17.0.1",
     "redux": "4.2.0",
     "rimraf": "3.0.0",
