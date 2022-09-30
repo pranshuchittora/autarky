@@ -18,7 +18,7 @@
   "main": "build/index",
   "types": "build/index.d.ts",
   "dependencies": {
-    "chalk": "^3.0.0",
+    "chalk": "5.0.1",
     "fs": "^0.0.1-security",
     "g-factor": "^1.1.0",
     "ink": "^3.0.8",
