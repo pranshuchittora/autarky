@@ -33,7 +33,7 @@
     "react": "^17.0.1",
     "redux": "^4.2.0",
     "rimraf": "^3.0.0",
-    "yn": "^4.0.0"
+    "yn": "5.0.0"
   },
   "scripts": {
     "build": "NODE_ENV='production' npx webpack --config webpack.config.js",
