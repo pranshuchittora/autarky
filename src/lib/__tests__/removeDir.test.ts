@@ -4,7 +4,7 @@ import { removeDir, removeDirBulk } from "../removeDir";
 describe("Removes a single file", () => {
   test("Removes a file single.temp", () => {
     //Remove a file
-    fs.writeFileSync("single.temp", null);
+    fs.writeFileSync("single.temp", '');
     removeDir("single.temp");
     const currentDirArr = fs.readdirSync("./");
     expect(currentDirArr.includes("single.temp")).toBe(false);
@@ -14,8 +14,8 @@ describe("Removes a single file", () => {
 describe("Removes files given an array of path", () => {
   test("Removes multiple files", () => {
     //Remove a file
-    fs.writeFileSync("single1.temp", null);
-    fs.writeFileSync("single2.temp", null);
+    fs.writeFileSync("single1.temp", '');
+    fs.writeFileSync("single2.temp", '');
     removeDirBulk(["single1.temp", "single2.temp"]);
     const currentDirArr = fs.readdirSync("./");
     expect(
